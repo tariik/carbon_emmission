@@ -11,3 +11,33 @@ carbon<-read.csv(file = "data/archive.csv", header = T)
 head(carbon)
 str(carbon)
 summary(carbon)
+
+#Convertir le type de l'attribut YEAR du NUM  a DATE
+
+## Missing Values##
+
+## Data Cleaning##
+
+## Summary##
+
+
+## Descriptive Statistics
+
+##Histogram##
+
+##Model:
+
+# Maximum Likelihood Factor Analysis
+
+## Correlation matrix##
+
+## Multiple regression ##
+
+# compare models
+
+# matrix of predictors
+
+
+# summarize results
+
+
