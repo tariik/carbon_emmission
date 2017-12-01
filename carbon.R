@@ -1,7 +1,7 @@
 #Vider le contenu de la mйmoire
 #rm(list=ls())
 
-#Changement du repertoire courant
+#Changement du repertoire
 #setwd("E:/projets/carbon_emmission")
 setwd("C:/Users/admin/Desktop/projets/R/carbon_emmission/data")
 
@@ -11,7 +11,7 @@ carbon<-read.csv(file = "archive.csv", header = T)
 
 #Lister et verifier le contenu des donnees
 head(carbon)
-#renomer les col
+#renommer les col
 colnames(carbon)<-c('year',
                     'month',
                     'decimal_date',
@@ -51,7 +51,7 @@ ggplot() +
                         xlab('Date') +
                         ylab('concentrations de [PPM]')
 
-#poxplot de chaque mois
+#boite a moustaches de chaque mois
 lesmois <- c("January","February","March","April","May","June","July","August","September","October","November","December")
 carbon$MonthAbb <- lesmois[ carbon$month ]
 carbon$ordered_month <- factor(carbon$MonthAbb, levels = month.name)
@@ -72,12 +72,12 @@ ggplot(data=carbon, aes(x=year,y=ordered_month)) +
 #obs=ts(carbon$carbon_dioxide_ppm,start=c(1958,1),frequency=12)
 #obs
 
-##Model:(Série temporelle)
+##Model (Série temporelle)
 library("dplyr")
 serie <- carbon %>% dplyr::select(year,month,carbon_dioxide_ppm)
 serie_ts <- ts(serie$carbon_dioxide_ppm, start=c(1958,3),end=c(2016,02),frequency=12)
 
-#arima model
+# Model ARIMA
 library(forecast)
 m_aa = auto.arima(serie_ts)
 
